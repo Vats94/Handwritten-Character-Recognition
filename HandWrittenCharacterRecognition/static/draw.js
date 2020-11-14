@@ -14,6 +14,9 @@ function drawCanvas() {
     canvas = document.getElementById('canvas');
     context = document.getElementById('canvas').getContext("2d");
 
+    context.fillStyle = 'white';
+    context.fillRect(0, 0, canvas.width, canvas.height);
+
     $('#canvas').mousedown(function (e) {
         var mouseX = e.pageX - this.offsetLeft;
         var mouseY = e.pageY - this.offsetTop;
@@ -50,9 +53,11 @@ function addClick(x, y, dragging) {
 function redraw() {
 
     context.clearRect(0, 0, context.canvas.width, context.canvas.height); // Clears the canvas
+    context.fillStyle = 'white';
+    context.fillRect(0, 0, canvas.width, canvas.height);
     context.strokeStyle = curColor;
     context.lineJoin = "round";
-    context.lineWidth = 6;
+    context.lineWidth = 50;
 for (var i = 0; i < clickX.length; i++) {
     context.beginPath();
     if (clickDrag[i] && i) {
@@ -76,4 +81,6 @@ function save() {
     image.id = "pic";
     image.src = canvas.toDataURL();
     url.value = image.src;
+    console.log(url.value)
+
 }
