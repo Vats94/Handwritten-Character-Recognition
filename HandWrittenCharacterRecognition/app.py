@@ -1,5 +1,5 @@
-import cv2
 import numpy as np
+import cv2
 import base64
 from flask import Flask,render_template,url_for,request
 import tensorflow.keras
@@ -45,7 +45,7 @@ def predict():
         #getting prediction
         img_pred = char_dict[np.argmax(model.predict(img_final))]
 
-    return render_template('results.html', prediction=img_pred)
+    return render_template('draw.html', prediction=img_pred)
 
 
 if __name__ == '__main__':

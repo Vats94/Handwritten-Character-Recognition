@@ -1,5 +1,4 @@
 header{
-    font-family: Arial;
     font-size: 55px;
     text-align: center;
 
@@ -13,9 +12,14 @@ header{
 
 #canvas{
   display: inline;
-
+  z-index: -1;
 }
 
+.results{
+  z-index: 1;
+  padding: 25px 0px 0px 0px;
+
+}
 
 input[type=submit] {
   display: block;
@@ -35,11 +39,9 @@ input[type=submit] {
 body {background-color: #d2dff7;}
 
 h1{
-  font-family: Arial;
   font-size: 30px;
 }
 
 h2{
-  font-family: Arial;
-  font-size: 24x;
+  font-size: 36px;
 }

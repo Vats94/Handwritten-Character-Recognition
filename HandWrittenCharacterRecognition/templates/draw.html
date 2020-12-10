@@ -1,10 +1,35 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Character Recognition</title>
+    <title>ABCs</title>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.js"></script>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles_draw.css') }}">
     <script type="text/javascript" src="{{ url_for('static', filename='draw.js') }}"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="shortcut icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="shortcut icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+
+    <style>
+        header {
+        font-family: "Open Sans";
+        }
+
+        h2 {
+        font-family: "Open Sans";
+        }
+
+        .predict::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+            font-family: 'myFont', Arial, Helvetica, sans-serif;
+            opacity: 1; /* Firefox */
+        }
+    </style>
+
 
 </head>
     <header>
@@ -14,7 +39,7 @@
 
 <body>
     <form id = "myForm" action="{{ url_for('predict')}}" method="POST" enctype="multipart/form-data">
-        <canvas id="canvas", name ="draw" width="550" height="550" style="border:1px solid #000000;">
+        <canvas id="canvas", name ="draw" width="550" height="550" style="border:2px solid #000000;">
 
             <script type="text/javascript">
             $(document).ready(function() {
@@ -23,7 +48,17 @@
         </script>
         </canvas>
         <input type="hidden" id = 'url' name="url" value="">
-        <input type="submit" id = 'predict' value="Predict" onclick="return save();">
+        <input type="submit" class = 'predict' id = 'predict' value="Predict" onclick="return save();">
+
+
+        <div class="results">
+        {%if prediction%}
+        <h2 style="color:red;">You drew the letter: {{ prediction }} ! </h2>
+        {%else%}
+         <h2 style="color:red;">Draw an Upper-Cased Letter!</h2>
+        {%endif%}
+    </div>
+
     </form>
 
     </body>
